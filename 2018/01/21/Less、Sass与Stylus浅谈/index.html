@@ -119,7 +119,7 @@
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">width:~’calc(100% - 30px)’;</span><br><span class="line">.test_03&#123;</span><br><span class="line">  width: calc(300px - 20px);</span><br><span class="line">&#125;</span><br><span class="line">.test_04&#123;</span><br><span class="line">  width: ~&apos;calc(300px - 20px)&apos;; //想不让less算，让浏览器算  用在calc 或者滤镜</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="引入外部的文件-一些库或公共的"><a href="#引入外部的文件-一些库或公共的" class="headerlink" title="引入外部的文件(一些库或公共的)"></a>引入外部的文件(一些库或公共的)</h4><p><strong>.less文件引入</strong><br><code>@import &quot;base&quot;;</code> 默认后缀名是.less所以不用写<br><strong>.css文件引入`</strong><code></code>@import(less) “a.css”;` //注意(less)有空格，貌似我没用出来有待研究</p>
-<p>三种预处理器，个人更加倾向于 Stylus，其相较 其他两者 来说，变量更易保持 ‘清洁’，且更加灵活的支持 「CSS 风格」，可选择性的使用何种方式编写样式，更有效的提高代码的可读性、可维护性，也有利于团队合作。</p>
+<p><strong>三种预处理器，个人更加倾向于 Stylus，其相较 其他两者 来说，变量更易保持 ‘清洁’，且更加灵活的支持 「CSS 风格」，可选择性的使用何种方式编写样式，更有效的提高代码的可读性、可维护性，也有利于团队合作。</strong></p>
 
       
     </div>
@@ -161,6 +161,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/01/21/XSS/">XSS</a>
+      </li>
+    
+      <li>
         <a href="/2018/01/21/Less、Sass与Stylus浅谈/">Less、Sass与Stylus浅谈</a>
       </li>
     
@@ -176,10 +180,6 @@
         <a href="/2018/01/13/调整心态，做更好的自己/">调整心态，做更好的自己</a>
       </li>
     
-      <li>
-        <a href="/2018/01/13/myFristBlog/">My Frist Blog</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -193,6 +193,8 @@
   
     <li><a href="/tags/oh-my-jesus/">oh my jesus!</a><small>1</small></li>
   
+    <li><a href="/tags/xss/">xss</a><small>1</small></li>
+  
   </ul>
 </div>
 
@@ -201,7 +203,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag-Cloud</h3>
   <div class="entry">
-    <a href="/tags/CSS预处理器-Less-Sass-Stylus/" style="font-size: 10px;">CSS预处理器,Less,Sass,Stylus</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a>
+    <a href="/tags/CSS预处理器-Less-Sass-Stylus/" style="font-size: 10px;">CSS预处理器,Less,Sass,Stylus</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a>
   </div>
 </div>
 
