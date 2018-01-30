@@ -63,6 +63,56 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-01-30T10:57:12.000Z"><a href="/2018/01/30/组件与元素/">2018-01-30</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/01/30/组件与元素/">组件与元素</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>属性:props    一般属性是不改变的,经常作为传入的数据.</p>
+<p>例: 建立PropsTest控件,从网页上输出简单的  Hello, XXX, XXX为传入的属性name,当name为空时,输出Hello,World   输入为其他值时,比如:Curry,输出Hello,Curry</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/babel&quot;&gt;  </span><br><span class="line"></span><br><span class="line">    var PropsTest = React.createClass( &#123;  </span><br><span class="line"></span><br><span class="line">        render: function () &#123;  </span><br><span class="line"></span><br><span class="line">            return (  </span><br><span class="line"></span><br><span class="line">                    &lt;div&gt;  </span><br><span class="line"></span><br><span class="line">                        Hello, &#123;this.props.name? this.props.name: &quot;World&quot;&#125;  </span><br><span class="line"></span><br><span class="line">                    &lt;/div&gt;  </span><br><span class="line"></span><br><span class="line">            );  </span><br><span class="line"></span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">    &#125;);  </span><br><span class="line"></span><br><span class="line">    ReactDOM.render(  </span><br><span class="line"></span><br><span class="line">            &lt;PropsTest name=&quot;Curry&quot;/&gt;,  </span><br><span class="line"></span><br><span class="line">            document.body  </span><br><span class="line"></span><br><span class="line">    );  </span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>状态:state  一般状态是不断变化的,空间内部可以控制state的变化</p>
+<p>例: 建立StateTest控件,实现在输入框中输入数据XXX,输入Hello, XXX.  XXX随着输入框的输入内容而改变.  </p>
+<p>在render方法中定义<div>Hello, {this.state.name}</div>,   定义input,并添加onChange方法textChange, 在方法里面代码实现name的值随输入的值改变</p>
+<p>代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script type=&quot;text/babel&quot;&gt;  </span><br><span class="line">	var StateTest = React.createClass( &#123;  </span><br><span class="line">        getInitialState: function () &#123;  </span><br><span class="line">	        return &#123;  </span><br><span class="line">               name: &apos;World&apos;  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;,  </span><br><span class="line">        textChange: function (event) &#123;  </span><br><span class="line">            this.setState(&#123;  </span><br><span class="line">                name: event.target.value  </span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;,  </span><br><span class="line">        render: function () &#123;  </span><br><span class="line">            return (  </span><br><span class="line">                    &lt;div&gt;  </span><br><span class="line">                        &lt;p&gt;Hello, &#123;this.state.name&#125;&lt;/p&gt;  </span><br><span class="line">                        &lt;input type=&quot;text&quot; onChange=										&#123;this.textChange&#125; /&gt;  </span><br><span class="line">	                &lt;/div&gt;  </span><br><span class="line">             );  </span><br><span class="line">         &#125;  </span><br><span class="line">     &#125;);  </span><br><span class="line">     ReactDOM.render(  </span><br><span class="line">             &lt;StateTest /&gt;,  </span><br><span class="line">             document.body  </span><br><span class="line">     );  </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/组件-元素-属性-状态-React/">组件,元素,属性,状态,React</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2018-01-21T13:18:30.000Z"><a href="/2018/01/21/XSS/">2018-01-21</a></time>
       
       
@@ -424,6 +474,10 @@
   <ul class="entry">
     
       <li>
+        <a href="/2018/01/30/组件与元素/">组件与元素</a>
+      </li>
+    
+      <li>
         <a href="/2018/01/21/XSS/">XSS</a>
       </li>
     
@@ -437,10 +491,6 @@
     
       <li>
         <a href="/2018/01/13/调整心态，做更好的自己/">调整心态，做更好的自己</a>
-      </li>
-    
-      <li>
-        <a href="/2018/01/13/myFristBlog/">My Frist Blog</a>
       </li>
     
   </ul>
@@ -458,6 +508,8 @@
   
     <li><a href="/tags/xss/">xss</a><small>1</small></li>
   
+    <li><a href="/tags/组件-元素-属性-状态-React/">组件,元素,属性,状态,React</a><small>1</small></li>
+  
   </ul>
 </div>
 
@@ -466,7 +518,7 @@
 <div class="widget tagcloud">
   <h3 class="title">Tag-Cloud</h3>
   <div class="entry">
-    <a href="/tags/CSS预处理器-Less-Sass-Stylus/" style="font-size: 10px;">CSS预处理器,Less,Sass,Stylus</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a>
+    <a href="/tags/CSS预处理器-Less-Sass-Stylus/" style="font-size: 10px;">CSS预处理器,Less,Sass,Stylus</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/组件-元素-属性-状态-React/" style="font-size: 10px;">组件,元素,属性,状态,React</a>
   </div>
 </div>
 
