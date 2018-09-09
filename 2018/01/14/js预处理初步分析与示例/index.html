@@ -11,7 +11,7 @@
   <meta name="description" content="JavaScript是一种描述型的脚本语言，它不同于java或C#等编译性语言,它不需要进行编译成中间语言,而是由浏览器进行动态地解析与执行。 代码并非由解析器直接逐行执行，所以理解javaScript语言的运行机制，掌握javascript的执行顺序，有利于我们学好JavaScript。 预处理（预编译）阶段：创建一个词法环境（LexicalEnvironment，在后面简写为LE），扫描代码中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js预处理初步分析与示例">
-<meta property="og:url" content="http://yoursite.com/2018/01/14/js预处理初步分析与示例/index.html">
+<meta property="og:url" content="/2018/01/14/js预处理初步分析与示例/index.html">
 <meta property="og:site_name" content="ZZZ-Bin&#39;s Blog">
 <meta property="og:description" content="JavaScript是一种描述型的脚本语言，它不同于java或C#等编译性语言,它不需要进行编译成中间语言,而是由浏览器进行动态地解析与执行。 代码并非由解析器直接逐行执行，所以理解javaScript语言的运行机制，掌握javascript的执行顺序，有利于我们学好JavaScript。 预处理（预编译）阶段：创建一个词法环境（LexicalEnvironment，在后面简写为LE），扫描代码中">
 <meta property="og:updated_time" content="2018-01-14T14:05:03.330Z">
@@ -152,7 +152,7 @@
     <div class="content">
         <p>最后更新： 2018年01月14日 22:05</p>
         <footer>
-            <a href="http://yoursite.com">
+            <a href="">
                 <img src="/images/logo.jpg" alt="ZZZ-Bin">
                 ZZZ-Bin
             </a>
@@ -207,7 +207,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/01/14/js预处理初步分析与示例/&title=《js预处理初步分析与示例》 — ZZZ-Bin's Blog&pic=http://yoursite.comimages/logo.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/14/js预处理初步分析与示例/index.html&title=《js预处理初步分析与示例》 — ZZZ-Bin's Blog&pic=images/logo.jpg" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -217,22 +217,22 @@
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/01/14/js预处理初步分析与示例/&title=《js预处理初步分析与示例》 — ZZZ-Bin's Blog&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/14/js预处理初步分析与示例/index.html&title=《js预处理初步分析与示例》 — ZZZ-Bin's Blog&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/01/14/js预处理初步分析与示例/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/14/js预处理初步分析与示例/index.html" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js预处理初步分析与示例》 — ZZZ-Bin's Blog&url=http://yoursite.com/2018/01/14/js预处理初步分析与示例/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js预处理初步分析与示例》 — ZZZ-Bin's Blog&url=/2018/01/14/js预处理初步分析与示例/index.html&via=" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/01/14/js预处理初步分析与示例/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/14/js预处理初步分析与示例/index.html" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -242,7 +242,7 @@
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/01/14/js预处理初步分析与示例/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=/2018/01/14/js预处理初步分析与示例/index.html" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -311,7 +311,7 @@
 <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script>
   var mihoConfig = {
-      root: "http://yoursite.com",
+      root: "",
       animate: true,
       isHome: false,
       share: true,
