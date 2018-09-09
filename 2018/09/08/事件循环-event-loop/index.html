@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((res">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="ZZZ-Bin">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="事件循环 event loop"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="They throw their shadows before them who carry their lantern on their back"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>事件循环 event loop - They throw their shadows before them who carry their lantern on their back</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/tags">
+                    Tags
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/categories">
+                    Categories
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/09/08/事件循环-event-loop/">
+                事件循环 event loop
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-09-08</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve( )</span><br><span class="line">&#125;).then(<span class="function"><span class="params">( )</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve( )</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">( )</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  setTimeout(<span class="function"><span class="params">( )</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">3</span>) &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">( )</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">5</span>) &#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>``</p>
+<h5 id="首先将所有代码放入-macrotask-queue-中执行："><a href="#首先将所有代码放入-macrotask-queue-中执行：" class="headerlink" title="首先将所有代码放入 macrotask queue 中执行："></a>首先将所有代码放入 <code>macrotask queue</code> 中执行：</h5><p><img src="/img/事件循环-event-loop/step one.png" alt="step one"></p>
+<p>↑ 将匿名函数放入 <code>microtask queue</code> 中排队等待。</p>
+<p><img src="/img/事件循环-event-loop/step two.png" alt="step two"></p>
+<p>↑ 控制台输出 ‘4’。</p>
+<p><img src="/img/事件循环-event-loop/step three.png" alt="step three"></p>
+<p>↑ 放入 <code>macrotask queue</code>  中排队等待执行。</p>
+<p><code>microtask queue</code> :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">microtask1：/* P1.then 中的回调函数 */</span><br></pre></td></tr></table></figure>
+<h5 id="macrotask-queue-任务执行结束，检查-microtask-queue-，发现-task1，将-task1-推出执行："><a href="#macrotask-queue-任务执行结束，检查-microtask-queue-，发现-task1，将-task1-推出执行：" class="headerlink" title="macrotask queue 任务执行结束，检查 microtask queue ，发现 task1，将 task1 推出执行："></a><code>macrotask queue</code> 任务执行结束，检查 <code>microtask queue</code> ，发现 <code>task1</code>，将 <code>task1</code> 推出执行：</h5><p><img src="/img/事件循环-event-loop/step four.png" alt="step four"></p>
+<p>↑ 控制台输出 ‘1’。</p>
+<p><img src="/img/事件循环-event-loop/setp five.png" alt="setp five"></p>
+<p>↑ 将 <code>P2.then</code> 中的匿名函数放入 <code>microtask queue</code> 中。</p>
+<p><code>microtask queue</code>:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">maicrotask2: <span class="comment">/* P2.then 中的回调函数  () =&gt; console.log(2)*/</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/事件循环-event-loop/step six.png" alt="step six"></p>
+<p>↑ 放入 <code>macrotask queue</code>  中排队等待执行。</p>
+<p><code>macrotask queue</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">macrotask1: <span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">macortask2: () -&gt; <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="microtask1-执行结束，检查-microtask-queue-发现-microtask2，推出执行："><a href="#microtask1-执行结束，检查-microtask-queue-发现-microtask2，推出执行：" class="headerlink" title="microtask1 执行结束，检查 microtask queue 发现 microtask2，推出执行："></a><code>microtask1</code> 执行结束，检查 <code>microtask queue</code> 发现 <code>microtask2</code>，推出执行：</h5><p><img src="/img/事件循环-event-loop/step seven.png" alt="step seven"></p>
+<p>↑ 控制台输出 ‘2’。</p>
+<p>##### </p>
+<h5 id="microtask2-执行结束，检查-microtask-queue-，microtask-queue-为空，转而执行-macrotask-queue-中的任务："><a href="#microtask2-执行结束，检查-microtask-queue-，microtask-queue-为空，转而执行-macrotask-queue-中的任务：" class="headerlink" title="microtask2 执行结束，检查 microtask queue ，microtask queue  为空，转而执行 macrotask queue 中的任务："></a><code>microtask2</code> 执行结束，检查 <code>microtask queue</code> ，<code>microtask queue</code>  为空，转而执行 <code>macrotask queue</code> 中的任务：</h5><p><code>macrotask1</code> 执行，控制台输出 ‘5’。</p>
+<p><code>macrotask2</code> 执行，控制台输出 ‘3’。</p>
+<h5 id="macrotask-queue-执行结束，检查-microtask-queue，-mirotask-queue为空，event-loop-结束。"><a href="#macrotask-queue-执行结束，检查-microtask-queue，-mirotask-queue为空，event-loop-结束。" class="headerlink" title="macrotask queue 执行结束，检查 microtask queue， mirotask queue为空，event loop 结束。"></a><code>macrotask queue</code> 执行结束，检查 <code>microtask queue</code>， <code>mirotask queue</code>为空，event loop 结束。</h5>
+    </div>
+
+    
+
+    
+        <div class="post-tags">
+            <i class="fa fa-tags" aria-hidden="true"></i>
+            <a href="/tags/事件循环、event-loop、异步/">#事件循环、event loop、异步</a>
+        </div>
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    This theme was developed by <a href="https://github.com/klugjo">Jonathan Klughertz</a>. The source code is available on Github. Create Websites. Make Magic.
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2018/09/08/事件循环-event-loop/">事件循环 event loop</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/30/CommonJs-和-AMD-CMD/">CommonJs 和 AMD/CMD</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/28/JavaScript-对象的深拷贝与浅拷贝/">JavaScript 对象的深拷贝与浅拷贝</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2018/03/27/JavaScript-中字面量、String-与-new-String-的差异/">JavaScript中字面量、String()与n</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/klugjo/hexo-theme-alpha-dust">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/?lang=en">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-twitter"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-instagram"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://dribbble.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-dribbble"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://plus.google.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-google-plus"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://www.behance.net/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-behance"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="https://500px.com/">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-500px"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:test@example.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="\#">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-rss"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    @Untitled. All right reserved | Design & Hexo <a href="http://www.codeblocq.com/">Jonathan Klughertz</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
