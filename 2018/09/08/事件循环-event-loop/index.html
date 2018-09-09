@@ -8,13 +8,14 @@
   
     <meta name="keywords" content="ZZZ-Bin,ZZZ-Bin's Blog" />
   
-  <meta name="description" content="123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((resolve, reject) =&amp;gt; &amp;#123;    resolve( )  &amp;#125;).">
-<meta name="keywords" content="事件循环、event loop、异步">
+  <meta name="description" content="只有一个 event loop ，但任务队列可有多个： 123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((resolve, reject) =&amp;gt; &amp;#">
+<meta name="keywords" content="事件循环,event loop,异步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事件循环 event loop">
 <meta property="og:url" content="http://yoursite.com/2018/09/08/事件循环-event-loop/index.html">
 <meta property="og:site_name" content="ZZZ-Bin&#39;s Blog">
-<meta property="og:description" content="123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((resolve, reject) =&amp;gt; &amp;#123;    resolve( )  &amp;#125;).">
+<meta property="og:description" content="只有一个 event loop ，但任务队列可有多个： 123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((resolve, reject) =&amp;gt; &amp;#">
+<meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/cover.png">
 <meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/step%20one.png">
 <meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/step%20two.png">
 <meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/step%20three.png">
@@ -22,11 +23,11 @@
 <meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/setp%20five.png">
 <meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/step%20six.png">
 <meta property="og:image" content="http://yoursite.com/img/事件循环-event-loop/step%20seven.png">
-<meta property="og:updated_time" content="2018-09-09T08:24:43.731Z">
+<meta property="og:updated_time" content="2018-09-09T09:48:45.788Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件循环 event loop">
-<meta name="twitter:description" content="123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((resolve, reject) =&amp;gt; &amp;#123;    resolve( )  &amp;#125;).">
-<meta name="twitter:image" content="http://yoursite.com/img/事件循环-event-loop/step%20one.png">
+<meta name="twitter:description" content="只有一个 event loop ，但任务队列可有多个： 123456789101112131415161718192021new Promise((resolve, reject) =&amp;gt; &amp;#123;  resolve( )&amp;#125;).then(( ) =&amp;gt; &amp;#123;  console.log(1)  new Promise((resolve, reject) =&amp;gt; &amp;#">
+<meta name="twitter:image" content="http://yoursite.com/img/事件循环-event-loop/cover.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -136,7 +137,8 @@
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve( )</span><br><span class="line">&#125;).then(<span class="function"><span class="params">( )</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve( )</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">( )</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  setTimeout(<span class="function"><span class="params">( )</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">3</span>) &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">( )</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">5</span>) &#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+            <h5 id="只有一个-event-loop-，但任务队列可有多个："><a href="#只有一个-event-loop-，但任务队列可有多个：" class="headerlink" title="只有一个 event loop ，但任务队列可有多个："></a>只有一个 <code>event loop</code> ，但任务队列可有多个：</h5><p><img src="/img/事件循环-event-loop/cover.png" alt="cover"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">  resolve( )</span><br><span class="line">&#125;).then(<span class="function"><span class="params">( )</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    resolve( )</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">( )</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">  setTimeout(<span class="function"><span class="params">( )</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">3</span>) &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="params">( )</span> =&gt;</span> &#123; <span class="built_in">console</span>.log(<span class="number">5</span>) &#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// 5</span></span><br><span class="line"><span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 <p>``</p>
 <h5 id="首先将所有代码放入-macrotask-queue-中执行："><a href="#首先将所有代码放入-macrotask-queue-中执行：" class="headerlink" title="首先将所有代码放入 macrotask queue 中执行："></a>首先将所有代码放入 <code>macrotask queue</code> 中执行：</h5><p><img src="/img/事件循环-event-loop/step one.png" alt="step one"></p>
 <p>↑ 将匿名函数放入 <code>microtask queue</code> 中排队等待。</p>
@@ -164,7 +166,7 @@
 <h5 id="macrotask-queue-执行结束，检查-microtask-queue，-mirotask-queue为空，event-loop-结束。"><a href="#macrotask-queue-执行结束，检查-microtask-queue，-mirotask-queue为空，event-loop-结束。" class="headerlink" title="macrotask queue 执行结束，检查 microtask queue， mirotask queue为空，event loop 结束。"></a><code>macrotask queue</code> 执行结束，检查 <code>microtask queue</code>， <code>mirotask queue</code>为空，event loop 结束。</h5>
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年09月09日 16:24</p>
+        <p>最后更新： 2018年09月09日 17:48</p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.jpg" alt="ZZZ-Bin">
@@ -221,7 +223,7 @@
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/09/08/事件循环-event-loop/&title=《事件循环 event loop》 — ZZZ-Bin's Blog&pic=http://yoursite.comimages/logo.jpg" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/09/08/事件循环-event-loop/&title=《事件循环 event loop》 — ZZZ-Bin's Blog&pic=/img/事件循环-event-loop/cover.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -268,7 +270,11 @@
   <li class="article-footer-tags">
     <i class="fa fa-tags"></i>
       
-    <a href="/tags/事件循环、eventloop、异步/" class="color4">事件循环、event loop、异步</a>
+    <a href="/tags/事件循环/" class="color5">事件循环</a>
+      
+    <a href="/tags/eventloop/" class="color1">event loop</a>
+      
+    <a href="/tags/异步/" class="color3">异步</a>
       
   </li>
 
@@ -281,7 +287,7 @@
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#首先将所有代码放入-macrotask-queue-中执行："><span class="post-toc-text">首先将所有代码放入 macrotask queue 中执行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#macrotask-queue-任务执行结束，检查-microtask-queue-，发现-task1，将-task1-推出执行："><span class="post-toc-text">macrotask queue 任务执行结束，检查 microtask queue ，发现 task1，将 task1 推出执行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#microtask1-执行结束，检查-microtask-queue-发现-microtask2，推出执行："><span class="post-toc-text">microtask1 执行结束，检查 microtask queue 发现 microtask2，推出执行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#microtask2-执行结束，检查-microtask-queue-，microtask-queue-为空，转而执行-macrotask-queue-中的任务："><span class="post-toc-text">microtask2 执行结束，检查 microtask queue ，microtask queue  为空，转而执行 macrotask queue 中的任务：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#macrotask-queue-执行结束，检查-microtask-queue，-mirotask-queue为空，event-loop-结束。"><span class="post-toc-text">macrotask queue 执行结束，检查 microtask queue， mirotask queue为空，event loop 结束。</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#只有一个-event-loop-，但任务队列可有多个："><span class="post-toc-text">只有一个 event loop ，但任务队列可有多个：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#首先将所有代码放入-macrotask-queue-中执行："><span class="post-toc-text">首先将所有代码放入 macrotask queue 中执行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#macrotask-queue-任务执行结束，检查-microtask-queue-，发现-task1，将-task1-推出执行："><span class="post-toc-text">macrotask queue 任务执行结束，检查 microtask queue ，发现 task1，将 task1 推出执行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#microtask1-执行结束，检查-microtask-queue-发现-microtask2，推出执行："><span class="post-toc-text">microtask1 执行结束，检查 microtask queue 发现 microtask2，推出执行：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#microtask2-执行结束，检查-microtask-queue-，microtask-queue-为空，转而执行-macrotask-queue-中的任务："><span class="post-toc-text">microtask2 执行结束，检查 microtask queue ，microtask queue  为空，转而执行 macrotask queue 中的任务：</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#macrotask-queue-执行结束，检查-microtask-queue，-mirotask-queue为空，event-loop-结束。"><span class="post-toc-text">macrotask queue 执行结束，检查 microtask queue， mirotask queue为空，event loop 结束。</span></a></li></ol>
         </nav>
     </aside>
     
@@ -355,7 +361,7 @@
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/CSS预处理器-Less-Sass-Stylus/" style="font-size: 10px;">CSS预处理器,Less,Sass,Stylus</a> <a href="/tags/CommonJs、AMD、CMD/" style="font-size: 10px;">CommonJs、AMD、CMD</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/事件循环、event-loop、异步/" style="font-size: 10px;">事件循环、event loop、异步</a> <a href="/tags/字面量、String-、new-String/" style="font-size: 10px;">字面量、String()、new String()</a> <a href="/tags/深拷贝、浅拷贝/" style="font-size: 10px;">深拷贝、浅拷贝</a> <a href="/tags/组件-元素-属性-状态-React/" style="font-size: 10px;">组件,元素,属性,状态,React</a>
+            <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/CSS预处理器/" style="font-size: 10px;">CSS预处理器</a> <a href="/tags/CommonJs/" style="font-size: 10px;">CommonJs</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/String/" style="font-size: 10px;">String()</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/event-loop/" style="font-size: 10px;">event loop</a> <a href="/tags/new-String/" style="font-size: 10px;">new String()</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/事件循环/" style="font-size: 10px;">事件循环</a> <a href="/tags/元素/" style="font-size: 10px;">元素</a> <a href="/tags/字面量/" style="font-size: 10px;">字面量</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/浅拷贝/" style="font-size: 10px;">浅拷贝</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/状态/" style="font-size: 10px;">状态</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -388,7 +394,7 @@
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/CSS预处理器-Less-Sass-Stylus/" style="font-size: 10px;">CSS预处理器,Less,Sass,Stylus</a> <a href="/tags/CommonJs、AMD、CMD/" style="font-size: 10px;">CommonJs、AMD、CMD</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/事件循环、event-loop、异步/" style="font-size: 10px;">事件循环、event loop、异步</a> <a href="/tags/字面量、String-、new-String/" style="font-size: 10px;">字面量、String()、new String()</a> <a href="/tags/深拷贝、浅拷贝/" style="font-size: 10px;">深拷贝、浅拷贝</a> <a href="/tags/组件-元素-属性-状态-React/" style="font-size: 10px;">组件,元素,属性,状态,React</a>
+            <a href="/tags/AMD/" style="font-size: 10px;">AMD</a> <a href="/tags/CMD/" style="font-size: 10px;">CMD</a> <a href="/tags/CSS预处理器/" style="font-size: 10px;">CSS预处理器</a> <a href="/tags/CommonJs/" style="font-size: 10px;">CommonJs</a> <a href="/tags/Less/" style="font-size: 10px;">Less</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Sass/" style="font-size: 10px;">Sass</a> <a href="/tags/String/" style="font-size: 10px;">String()</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/event-loop/" style="font-size: 10px;">event loop</a> <a href="/tags/new-String/" style="font-size: 10px;">new String()</a> <a href="/tags/oh-my-jesus/" style="font-size: 10px;">oh my jesus!</a> <a href="/tags/xss/" style="font-size: 10px;">xss</a> <a href="/tags/事件循环/" style="font-size: 10px;">事件循环</a> <a href="/tags/元素/" style="font-size: 10px;">元素</a> <a href="/tags/字面量/" style="font-size: 10px;">字面量</a> <a href="/tags/属性/" style="font-size: 10px;">属性</a> <a href="/tags/异步/" style="font-size: 10px;">异步</a> <a href="/tags/浅拷贝/" style="font-size: 10px;">浅拷贝</a> <a href="/tags/深拷贝/" style="font-size: 10px;">深拷贝</a> <a href="/tags/状态/" style="font-size: 10px;">状态</a> <a href="/tags/组件/" style="font-size: 10px;">组件</a>
         </div>
     </div>
 </div>
